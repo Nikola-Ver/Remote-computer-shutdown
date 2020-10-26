@@ -28,6 +28,8 @@ The program can remotely shutdown your computer from any device (if the device a
 <img src="form\img\readme\switch-vibration.gif" />
 </p>
 
+### By triple clicking on the phone, you can go to full screen mode
+
 P. s. To start, you must also download the <a href="https://nodejs.org/en/download/">Node js</a>.
 
 Happy viewing! :)
