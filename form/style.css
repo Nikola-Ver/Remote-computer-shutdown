@@ -67,15 +67,29 @@ input {
   background: transparent;
   outline: none;
   color: #afafaf;
+  font-weight: 600;
+  font-size: 18px;
   border-bottom: 1px solid #4e4e4e;
+  transition: 0.3s;
+}
+
+#hint-time {
+  text-align: center;
   font-weight: 600;
   font-size: 18px;
   transition: 0.3s;
+  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0;
 }
 
 input:focus-within {
   border-bottom: 1px solid #00ffb4;
   color: white;
+}
+
+.input-form:focus-within #hint-time {
+  opacity: 1;
+  color: #afafaf;
 }
 
 .input-form {
@@ -127,10 +141,10 @@ input:focus-within {
     margin-bottom: 40px;
   }
   .glitch-btn:nth-child(1) {
-    margin-left: 130px;
+    margin-left: 120px;
   }
   .glitch-btn {
-    margin-left: 100px;
+    margin-left: 110px;
   }
 }
 

@@ -20,7 +20,17 @@ The program can remotely shutdown your computer from any device (if the device a
 
 ### Set the timer or stop it (especially for "well, this is definitely the last episode")
 
+- Time can be set in: seconds, minutes: seconds, hours: minutes: seconds
+
+<p align="center">
 <img src="form\img\readme\shutdown.gif" />
+</p>
+
+- Also you can only enter hours, minutes or seconds
+
+<p align="center">
+<img src="form\img\readme\shutdown-without.gif" />
+</p>
 
 ### By double tapping on the screen, you can turn vibration on and off
 
