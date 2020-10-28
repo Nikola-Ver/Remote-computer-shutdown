@@ -24,6 +24,26 @@ The program can remotely shutdown your computer from any device (if the device a
 
 - If you want to set automatic startup, then moved the folder with the program to the C drive. Then hold down the Win button and press the R button, enter "shell:startup" in the field that appears, press Enter. Then move there the file called setAutoStart (setAutoStart.bat) from the program files (Remote-computer-shutdown, Remote-computer-shutdown\setAutoStart.bat). The program will now start automatically
 
+#### Step by step in photos
+
+1. Move the program folder to the C drive
+
+<p align="center">
+<img src="form\img\readme\position-to-set-auto-start.png" />
+</p>
+
+2. Enter shell: startup into the run window
+
+<p align="center">
+<img src="form\img\readme\input-auto-start.png" />
+</p>
+
+3. Move setAutoStart (setAutoStart.bat) to the appeared startup folder
+
+<p align="center">
+<img src="form\img\readme\set-auto-start.png" />
+</p>
+
 ### <a href="https://ichip.ru/sovety/ekspluataciya/kak-uznat-svoy-ili-chuzhoy-ip-adres-656332#:~:text=%D0%92%D1%8B%20%D0%BC%D0%BE%D0%B6%D0%B5%D1%82%D0%B5%20%D0%BB%D0%B5%D0%B3%D0%BA%D0%BE%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%B2%D0%B0%D1%88%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20IP%2D%D0%B0%D0%B4%D1%80%D0%B5%D1%81&text=%D0%9E%D1%82%D0%BA%D1%80%D0%BE%D0%B9%D1%82%D0%B5%20CMD%3A%20%D0%B4%D0%BB%D1%8F%20%D1%8D%D1%82%D0%BE%D0%B3%D0%BE%20%D0%BE%D0%B4%D0%BD%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE,%D0%BF%D0%BE%D0%BB%D0%B5%20%C2%ABIPv4%2D%D0%B0%D0%B4%D1%80%D0%B5%D1%81%C2%BB.">Determining the ip of the computer</a>
 
 - Open CMD: to do this, simultaneously press Win + R. In the window that appears, enter "cmd" and confirm your choice by clicking on "OK". Now enter "ipconfig" at the command line. You can find your IP address in the "IPv4 Address" field.
