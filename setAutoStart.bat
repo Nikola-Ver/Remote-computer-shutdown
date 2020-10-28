@@ -1,2 +1,2 @@
-cd C:\Remote-computer-shutdown-hidden
+cd C:\Remote-computer-shutdown
 hiddenStartWin.vbs
