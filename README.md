@@ -68,7 +68,7 @@ The program can remotely shutdown your computer from any device (if the device a
 <img src="form\img\readme\switch-vibration.gif" />
 </p>
 
-### To change the volume, just hold down the cursor anywhere for a quarter of a second and swipe up or down, after you release the cursor, the volume will be applied
+### To change the volume, you need to click on an empty area, after which you need to hold the cursor on an empty area, swipe up or down, after you release the cursor, the volume will be applied
 
 <p align="center">
 <img src="form\img\readme\volume.gif" />
