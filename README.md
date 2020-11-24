@@ -68,7 +68,14 @@ The program can remotely shutdown your computer from any device (if the device a
 <img src="form\img\readme\switch-vibration.gif" />
 </p>
 
+### To change the volume, just hold down the cursor anywhere for a quarter of a second and swipe up or down, after you release the cursor, the volume will be applied
+
+<p align="center">
+<img src="form\img\readme\volume.gif" />
+</p>
+
 ### By putting three fingers on the screen, you can go to full screen mode
+
 
 P. s. To start, you must also download the <a href="https://nodejs.org/en/download/">Node js</a>.
 

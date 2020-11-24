@@ -1,3 +1,11 @@
+:root {
+  --vol-value: 20%;
+}
+
+* {
+  user-select: none;
+}
+
 body {
   margin: 0;
   background: url("./img/gif/bacground.gif") no-repeat;
@@ -7,6 +15,34 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
+}
+
+#vol-box {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: black;
+}
+
+#vol-text {
+  z-index: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: auto;
+  color: white;
+  font-size: 45px;
+  text-align: center;
+}
+
+.vol-current {
+  position: absolute;
+  width: 100vw;
+  height: var(--vol-value);
+  bottom: 0;
+  background: #00ffb4;
 }
 
 #time-left {
@@ -112,7 +148,6 @@ input:focus-within {
 .buttons {
   text-decoration: none;
   cursor: pointer;
-  user-select: none;
   color: #00ffb4;
 }
 
