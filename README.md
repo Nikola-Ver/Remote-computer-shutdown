@@ -22,7 +22,7 @@ The program can remotely shutdown your computer from any device (if the device a
 
 ### Setting autorun on computer startup
 
-- If you want to set automatic startup, then moved the folder with the program to the C drive. Then hold down the Win button and press the R button, enter "shell:startup" in the field that appears, press Enter. Then move there the file called setAutoStart (setAutoStart.vbs) from the program files (Remote-computer-shutdown, Remote-computer-shutdown\setAutoStart.vbs). The program will now start automatically
+- If you want to set automatic startup, then moved the folder with the program to the C drive. Then hold down the Win button and press the R button, enter "shell:startup" in the field that appears, press Enter. Then move there the file called Remote-computer-shutdown (Remote-computer-shutdown.vbs) from the program files (Remote-computer-shutdown, Remote-computer-shutdown\Remote-computer-shutdown.vbs). The program will now start automatically
 
 #### Step by step in photos
 
@@ -38,7 +38,7 @@ The program can remotely shutdown your computer from any device (if the device a
 <img src="form\img\readme\input-auto-start.png" />
 </p>
 
-3. Move setAutoStart (setAutoStart.vbs) to the appeared startup folder
+3. Move Remote-computer-shutdown (Remote-computer-shutdown.vbs) to the appeared startup folder
 
 <p align="center">
 <img src="form\img\readme\set-auto-start.png" />
