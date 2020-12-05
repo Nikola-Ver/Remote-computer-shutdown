@@ -4,6 +4,7 @@ let intervalId = null;
 let intervalId10 = null;
 let countCalls = 0;
 let flagVibrate = true;
+let flagPhone = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
 
 const hintTime = document.getElementById("hint-time");
 const timeInput = document.getElementById("time");
@@ -152,34 +153,35 @@ function showMessage(msg) {
 let flagNotBody = false;
 let idTimerBody = 0; 
 let numberOfClicks = 0;
-document.body.ontouchstart = (e) => {
-  if (e.target === backward) backwardDown();
-  else if (e.target === pause) pausePress();
-  else if (e.target === forwards) forwardsDown();
-  numberOfClicks++;
-  if (idTimerBody === 0)
-  idTimerBody = setTimeout(() => {
-      if (numberOfClicks === 1) {
-        if (e.path.length === 4 && !flagNotBody)
-          mouseDown(e);
-        if (e.target !== document.body) flagNotBody = true;
-        else flagNotBody = false;
-      } else if (numberOfClicks === 2) {
-        flagVibrate = !flagVibrate;
-        if (flagVibrate) showMessage("Vibration on");
-        else showMessage("Vibration off");
-      } else if (numberOfClicks > 2) {
-        const el = document.documentElement;
-        const rfs =
-          el.requestFullScreen ||
-          el.webkitRequestFullScreen ||
-          el.mozRequestFullScreen;
-        rfs.call(el);
-      }
-      idTimerBody = 0;
-      numberOfClicks = 0;
-    }, 50);
-};
+if (flagPhone)  
+  document.body.ontouchstart = (e) => {
+    if (e.target === backward) backwardDown();
+    else if (e.target === pause) pausePress();
+    else if (e.target === forwards) forwardsDown();
+    numberOfClicks++;
+    if (idTimerBody === 0)
+    idTimerBody = setTimeout(() => {
+        if (numberOfClicks === 1) {
+          if (e.path.length === 4 && !flagNotBody)
+            mouseDown(e);
+          if (e.target !== document.body) flagNotBody = true;
+          else flagNotBody = false;
+        } else if (numberOfClicks === 2) {
+          flagVibrate = !flagVibrate;
+          if (flagVibrate) showMessage("Vibration on");
+          else showMessage("Vibration off");
+        } else if (numberOfClicks > 2) {
+          const el = document.documentElement;
+          const rfs =
+            el.requestFullScreen ||
+            el.webkitRequestFullScreen ||
+            el.mozRequestFullScreen;
+          rfs.call(el);
+        }
+        idTimerBody = 0;
+        numberOfClicks = 0;
+      }, 50);
+  };
 
 function getSeconds(time) {
   const times = time.split(":");
@@ -241,8 +243,10 @@ function mouseUpVolume(e) {
   }
 }
 
-volumeButton.onmousedown = (e) => { mouseDownVolume(e) };
-volumeButton.ontouchstart = (e) => { mouseDownVolume(e) };
+if (flagPhone)
+  volumeButton.ontouchstart = (e) => { mouseDownVolume(e) };
+else 
+  volumeButton.onmousedown = (e) => { mouseDownVolume(e) };
 
 const volBox = document.getElementById("vol-box");
 let flagMouseDown = false;
@@ -286,18 +290,19 @@ function mouseUp(e) {
   }
 }
 
-document.body.onmousedown = e => { 
-  if (e.path.length === 4 && !flagNotBody)
-    mouseDown(e);
-  if (e.target !== document.body) flagNotBody = true;
-  else flagNotBody = false;
- };
-
-document.body.onmousemove = e => { mouseMove(e); mouseMoveVolume(e); mouseMoveMediaSwitch(e) };
-document.body.onmouseup = e => { mouseUp(e); mouseUpVolume(e); mouseUpMediaSwitch(e); backwardUp(); forwardsUp() };
-
-document.body.ontouchmove = e => { mouseMove(e); mouseMoveVolume(e); mouseMoveMediaSwitch(e) };
-document.body.ontouchend = e => { mouseUp(e); mouseUpVolume(e); mouseUpMediaSwitch(e); backwardUp(); forwardsUp() };
+ if (!flagPhone) {
+  document.body.onmousedown = e => { 
+    if (e.path.length === 4 && !flagNotBody)
+      mouseDown(e);
+    if (e.target !== document.body) flagNotBody = true;
+    else flagNotBody = false;
+  };
+  document.body.onmousemove = e => { mouseMove(e); mouseMoveVolume(e); mouseMoveMediaSwitch(e) };
+  document.body.onmouseup = e => { mouseUp(e); mouseUpVolume(e); mouseUpMediaSwitch(e); backwardUp(); forwardsUp() };
+ } else {
+  document.body.ontouchmove = e => { mouseMove(e); mouseMoveVolume(e); mouseMoveMediaSwitch(e) };
+  document.body.ontouchend = e => { mouseUp(e); mouseUpVolume(e); mouseUpMediaSwitch(e); backwardUp(); forwardsUp() };
+ }
 
 // Media
 let flagDownMediaSwitch = false;
@@ -311,7 +316,7 @@ const mediaBox = document.getElementById("media-box");
 function mouseDownMediaSwitch(e) {
   mediaBox.className = "";
   flagDownMediaSwitch = true;
-  startPosMediaSwitch = e.screenY ? e.screenY : e.changedTouches[0].screenY;
+  startPosMediaSwitch = e.screenY ? e.screenY : e.changedTouches[0].screenY; 
 }
 
 function mouseMoveMediaSwitch(e) {
@@ -342,9 +347,12 @@ function mouseUpMediaSwitch(e) {
   prevDelta = delta;
 }
 
-mediaSwitcher.onmousedown = e => { mouseDownMediaSwitch(e) };
-mediaSwitcher.ontouchstart = e => { mouseDownMediaSwitch(e) };
-mediaBox.ontouchend = e => { mouseUp(e); mouseUpMediaSwitch(e) };
+if (flagPhone) {
+  mediaBox.ontouchstart = e => { mouseDownMediaSwitch(e) };
+  mediaBox.ontouchend = e => { mouseUp(e); mouseUpMediaSwitch(e) };
+} else {
+  mediaBox.onmousedown = e => { mouseDownMediaSwitch(e) };
+}
 
 // Media keys
 
@@ -354,18 +362,6 @@ let flagDownForwards = false;
 const backward = document.getElementById("backward");
 const pause = document.getElementById("pause");
 const forwards = document.getElementById("forwards");
-
-backward.onselectstart = function() {
-  return false;
-};
-
-pause.onselectstart = function() {
-  return false;
-};
-
-forwards.onselectstart = function() {
-  return false;
-};
 
 function backwardDown() {
   flagDownBackward = true;
@@ -395,7 +391,7 @@ function forwardsUp() {
   }
 }
 
-if (!document.body.ontouchstart) {
+if (!flagPhone) {
   backward.onmousedown = () => { backwardDown() };
   pause.onmousedown = () => { pausePress() };
   forwards.onmousedown = () => { forwardsDown() };

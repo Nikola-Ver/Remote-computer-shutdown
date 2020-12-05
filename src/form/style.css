@@ -659,7 +659,7 @@ input:focus-within {
   top: 0;
   left: 0;
   width: 100vw;
-  height: calc(20px + 120px * var(--media-height));
+  height: calc(30px + 120px * var(--media-height));
 }
 
 #media-box.transition {
@@ -669,10 +669,12 @@ input:focus-within {
 #media-switch {
   cursor: pointer;
   margin: auto;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   width: 80px;
   height: 3px;
   background: #00ffb4;
+  user-select: none;
+  -moz-user-select: none;
 }
 
 .media-buttons {
@@ -734,16 +736,23 @@ input:focus-within {
 }
 
 #volume-button {
+  display: flex;
   cursor: pointer;
   position: absolute;
-  top: -5px;
-  left: var(--vol-value);
+  top: -18px;
+  left: calc(var(--vol-value) - 18px);
+  opacity: var(--media-height);
+  width: 41px;
+  height: 41px;
+}
+
+#volume-button div {
+  border-radius: 100%;
   width: 15px;
   height: 15px;
-  border-radius: 100%;
+  margin: auto;
   background: #00ffb4;
   box-shadow: 0 0 3px black;
-  opacity: var(--media-height);
 }
 
 #volume-current {
