@@ -1,5 +1,9 @@
 # Installation
 
+## Before installation
+
+- If you don't have <a href="https://nodejs.org/ru/download/">Node js</a> on your computer, then you need to download and install it
+
 ## Easy installation of the program
 
 - The program is installed on the computer using the installer. Run "Setup" ("Setup.exe"), then select the installation options convenient for you. After installation, you can run the program as described in the main <a href="..\">description</a>
