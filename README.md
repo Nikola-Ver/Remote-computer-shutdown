@@ -2,7 +2,7 @@
 
 Love to watch autoplay movies and TV shows but hate getting out of bed to turn off your computer? Then this is the program for you!
 
-The program can remotely shutdown your computer from any device (if the device and the computer are on the same network).
+The program can remotely shutdown your computer from any device (if the device and the computer are on the same network)
 
 ## Overview
 
@@ -33,7 +33,7 @@ The program can remotely shutdown your computer from any device (if the device a
 ### On-screen volume control
 
 - To turn on the on-screen volume control, you must enter "on" in the input field of the timer, then press "start". To turn off the on-screen volume control, you must enter "off" in the input field of the timer, and then press "start".
-After you have turned on the on-screen volume control, you can change the volume of the computer by holding the cursor in an empty space and moving it up or down
+  After you have turned on the on-screen volume control, you can change the volume of the computer by holding the cursor in an empty space and moving it up or down
 
 <p align="center">
 <img src="src\form\img\readme\display-volume.gif" width="350" />
