@@ -47,7 +47,20 @@ After you have turned on the on-screen volume control, you can change the volume
 <img src="src\form\img\readme\set-vibration.gif" width="350" />
 </p>
 
-
 ### Full screen mode
 
 - To enter full screen mode, you need to hold 3 fingers on the screen
+
+### Running the program
+
+- To find out the address to which you need to go, run "getAddress" ("getAddress.bat"), which is located in the "get_address" folder
+
+<p align="center">
+<img src="src\form\img\readme\get-address.png" />
+</p>
+
+- To start the program, you need to go to the "start_program" folder, after which you need to run the "start" ("start.bat") or "hiddenStart" ("hiddenStart.vbs") file. The first file runs the program in the console, after which the program can be closed if desired, and the second file runs the program in the background. To close a program in the background, you will need to find it in the task manager and close it yourself
+
+Detailed installation instructions are in the "installation" folder
+
+Happy viewing :)
