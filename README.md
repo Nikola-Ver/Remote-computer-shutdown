@@ -4,79 +4,50 @@ Love to watch autoplay movies and TV shows but hate getting out of bed to turn o
 
 The program can remotely shutdown your computer from any device (if the device and the computer are on the same network).
 
-## It requires
+## Overview
 
-### Start the server on your computer along with the series
+### Setting the timer to turn off
 
-- Open a file called startWin (startWin.bat if you work from windows operating system) or start (start.sh if work from other systems)
-
-### Go to the specified address from any device
-
-- The address is shown in the picture (http:\\\\192.168.43.82:3000):
+- The timer can be set: in seconds, in minutes : seconds, in hours : minutes : seconds
 
 <p align="center">
-<img src="form\img\readme\start.png" />
+<img src="src\form\img\readme\set-timer.gif" width="350" />
 </p>
 
-- Then you can close the console and run the program in the background hiddenStartWin (hiddenStartWin.vbs), works only on Windows
-
-### Setting autorun on computer startup
-
-- If you want to set automatic startup, then moved the folder with the program to the C drive. Then hold down the Win button and press the R button, enter "shell:startup" in the field that appears, press Enter. Then move there the file called Remote-computer-shutdown (Remote-computer-shutdown.vbs) from the program files (Remote-computer-shutdown, Remote-computer-shutdown\Remote-computer-shutdown.vbs). The program will now start automatically
-
-#### Step by step in photos
-
-1. Move the program folder to the C drive
+- You can also skip numbers when setting the timer
 
 <p align="center">
-<img src="form\img\readme\position-to-set-auto-start.png" />
+<img src="src\form\img\readme\set-timer-with-skip.gif" width="350" />
 </p>
 
-2. Enter shell: startup into the run window
+- If you do not enter anything in the input field of the timer, and press "start", then the computer will shut down early
+
+### Media buttons
+
+- Using the media buttons, you can: rewind, stop playback, rewind, change the computer volume
 
 <p align="center">
-<img src="form\img\readme\input-auto-start.png" />
+<img src="src\form\img\readme\media.gif" width="350" />
 </p>
 
-3. Move Remote-computer-shutdown (Remote-computer-shutdown.vbs) to the appeared startup folder
+### On-screen volume control
+
+- To turn on the on-screen volume control, you must enter "on" in the input field of the timer, then press "start". To turn off the on-screen volume control, you must enter "off" in the input field of the timer, and then press "start".
+After you have turned on the on-screen volume control, you can change the volume of the computer by holding the cursor in an empty space and moving it up or down
 
 <p align="center">
-<img src="form\img\readme\set-auto-start.png" />
+<img src="src\form\img\readme\display-volume.gif" width="350" />
 </p>
 
-### <a href="https://ichip.ru/sovety/ekspluataciya/kak-uznat-svoy-ili-chuzhoy-ip-adres-656332#:~:text=%D0%92%D1%8B%20%D0%BC%D0%BE%D0%B6%D0%B5%D1%82%D0%B5%20%D0%BB%D0%B5%D0%B3%D0%BA%D0%BE%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%B2%D0%B0%D1%88%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9%20IP%2D%D0%B0%D0%B4%D1%80%D0%B5%D1%81&text=%D0%9E%D1%82%D0%BA%D1%80%D0%BE%D0%B9%D1%82%D0%B5%20CMD%3A%20%D0%B4%D0%BB%D1%8F%20%D1%8D%D1%82%D0%BE%D0%B3%D0%BE%20%D0%BE%D0%B4%D0%BD%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE,%D0%BF%D0%BE%D0%BB%D0%B5%20%C2%ABIPv4%2D%D0%B0%D0%B4%D1%80%D0%B5%D1%81%C2%BB.">Determining the ip of the computer</a>
+### Turning vibrations on and off
 
-- Open CMD: to do this, simultaneously press Win + R. In the window that appears, enter "cmd" and confirm your choice by clicking on "OK". Now enter "ipconfig" at the command line. You can find your IP address in the "IPv4 Address" field.
-
-### Set the timer or stop it (especially for "well, this is definitely the last episode")
-
-- Time can be set in: seconds, minutes: seconds, hours: minutes: seconds
+- To turn vibrations on or off, hold two fingers on the screen
 
 <p align="center">
-<img src="form\img\readme\shutdown.gif" />
+<img src="src\form\img\readme\set-vibration.gif" width="350" />
 </p>
 
-- Also you can only enter hours, minutes or seconds
 
-<p align="center">
-<img src="form\img\readme\shutdown-without.gif" />
-</p>
+### Full screen mode
 
-### You can turn vibration on and off by placing two fingers on the screen
-
-<p align="center">
-<img src="form\img\readme\switch-vibration.gif" />
-</p>
-
-### To change the volume, you need to click on an empty area, after which you need to hold the cursor on an empty area, swipe up or down, after you release the cursor, the volume will be applied
-
-<p align="center">
-<img src="form\img\readme\volume.gif" />
-</p>
-
-### By putting three fingers on the screen, you can go to full screen mode
-
-
-P. s. To start, you must also download the <a href="https://nodejs.org/en/download/">Node js</a>.
-
-Happy viewing! :)
+- To enter full screen mode, you need to hold 3 fingers on the screen
