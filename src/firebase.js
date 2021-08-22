@@ -16,6 +16,13 @@ function checkConnection() {
 checkConnection();
 
 function run() {
+  process.on('exit', shutDownEvent);
+  process.on('SIGINT', shutDownEvent);
+  process.on('SIGHUP', shutDownEvent);
+  process.on('SIGUSR1', shutDownEvent);
+  process.on('SIGUSR2', shutDownEvent);
+  process.on('uncaughtException', shutDownEvent);
+
   firebase.initializeApp({
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
@@ -45,6 +52,20 @@ function run() {
         }
       }
     }
+  }
+
+  async function shutDownEvent() {
+    await firestore
+      .collection('computers')
+      .doc(macAddress)
+      .set({
+        name: os.hostname(),
+        localIp: ipAddress,
+        status: false,
+        lastAction: new Date().toLocaleString().replace(/\//g, '.'),
+        userName: os.userInfo().username,
+        message: '',
+      });
   }
 
   function shutdown() {
