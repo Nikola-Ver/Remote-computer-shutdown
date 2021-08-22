@@ -16,7 +16,7 @@
 <img src="..\src\form\img\readme\input-auto-start.png" />
 </p>
 
-After that you will go to the folder with autoruns, drag the "Remote-computer-shutdown" ("Remote-computer-shutdown.vbs") file here, which is located in the "start_program" folder ("C:/Remote-computer-shutdown/start_program/")
+After that you will go to the folder with autoruns, drag the "Remote-computer-shutdown" ("Remote-computer-shutdown.vbs") file here, which is located in the "start_program" folder ("C:/Remote-computer-shutdown/src/start_program/")
 
 <p align="center">
 <img src="..\src\form\img\readme\set-auto-start.png" />
