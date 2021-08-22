@@ -63,4 +63,6 @@ The program can remotely shutdown your computer from any device (if the device a
 
 Detailed installation instructions are in the "<a href="installation">installation</a>" folder
 
+You can turn off your computer remotely from anywhere in the world by following the link (<a href="https://remote-shutdown-page.web.app/">open</a>)
+
 Happy viewing :)
