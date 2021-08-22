@@ -51,7 +51,7 @@ async function showMessage(message) {
     wait: true,
   });
 
-  const { status } = (
+  const { status, lastAction } = (
     await firestore.collection('computers').doc(macAddress).get()
   ).data();
 
@@ -59,7 +59,7 @@ async function showMessage(message) {
     name: os.hostname(),
     localIp: ipAddress,
     status,
-    lastAction: new Date(),
+    lastAction,
     userName: os.userInfo().username,
     message: '',
   });
@@ -79,14 +79,17 @@ async function showMessage(message) {
     })();
   }, 30 * 1000);
 
-  await firestore.collection('computers').doc(macAddress).set({
-    name: os.hostname(),
-    localIp: ipAddress,
-    status: true,
-    lastAction: new Date(),
-    userName: os.userInfo().username,
-    message: '',
-  });
+  await firestore
+    .collection('computers')
+    .doc(macAddress)
+    .set({
+      name: os.hostname(),
+      localIp: ipAddress,
+      status: true,
+      lastAction: new Date().toLocaleString().replace(/\//g, '.'),
+      userName: os.userInfo().username,
+      message: '',
+    });
 
   firestore
     .collection('computers')
