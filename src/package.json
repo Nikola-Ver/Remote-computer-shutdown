@@ -1,0 +1,24 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "firebase.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "firebase": "^8.10.0",
+    "http": "0.0.1-security",
+    "loudness": "^0.4.1",
+    "node-notifier": "^10.0.0",
+    "os": "^0.1.2",
+    "path": "^0.12.7",
+    "socket.io": "^4.1.3"
+  }
+}
