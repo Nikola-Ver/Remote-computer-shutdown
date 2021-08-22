@@ -43,6 +43,7 @@ io.on('connection', (socket) => {
     if (JSON.parse(time)) {
       timeSleep = JSON.parse(time).timeSleep;
       const timer = JSON.parse(time).timer;
+      console.log(timer);
       console.info(`The computer will turn off after ${timeFormat(timer)}`);
 
       if (timerId) clearTimeout(timerId);
