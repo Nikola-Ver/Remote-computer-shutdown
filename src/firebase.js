@@ -4,10 +4,14 @@ const os = require('os');
 const firebase = require('firebase');
 const notifier = require('node-notifier');
 
+const CONNECTION_UPDATE_TIME = 5 * 1000;
+const WAKE_UP_TIME = 30 * 1000;
+const PING_TIME = 5 * 60 * 1000;
+
 function checkConnection() {
   require('dns').resolve('www.google.com', (err) => {
     if (err) {
-      setTimeout(checkConnection, 5000);
+      setTimeout(checkConnection, CONNECTION_UPDATE_TIME);
     } else {
       run();
     }
@@ -16,13 +20,6 @@ function checkConnection() {
 checkConnection();
 
 function run() {
-  process.on('exit', shutDownEvent);
-  process.on('SIGINT', shutDownEvent);
-  process.on('SIGHUP', shutDownEvent);
-  process.on('SIGUSR1', shutDownEvent);
-  process.on('SIGUSR2', shutDownEvent);
-  process.on('uncaughtException', shutDownEvent);
-
   firebase.initializeApp({
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
@@ -54,20 +51,6 @@ function run() {
     }
   }
 
-  async function shutDownEvent() {
-    await firestore
-      .collection('computers')
-      .doc(macAddress)
-      .set({
-        name: os.hostname(),
-        localIp: ipAddress,
-        status: false,
-        lastAction: new Date().toLocaleString().replace(/\//g, '.'),
-        userName: os.userInfo().username,
-        message: '',
-      });
-  }
-
   function shutdown() {
     exec(`shutdown -s -t 0`, function (error, stdout, stderr) {
       if (error)
@@ -76,26 +59,40 @@ function run() {
   }
 
   async function showMessage(message) {
-    notifier.notify({
-      title: 'Remote computer shutdown',
-      message,
-      icon: './form/img/logo.png',
-      sound: true,
-      wait: true,
-    });
+    if (message.indexOf('http') === 0 && !/ /.test(message)) {
+      const start =
+        process.platform == 'darwin'
+          ? 'open'
+          : process.platform == 'win32'
+          ? 'start'
+          : 'xdg-open';
+      exec(start + ' ' + message);
+    } else {
+      notifier.notify({
+        title: 'Remote computer shutdown',
+        message,
+        icon: './form/img/logo.png',
+        sound: true,
+        wait: true,
+      });
+    }
 
     const { status, lastAction } = (
       await firestore.collection('computers').doc(macAddress).get()
     ).data();
 
-    await firestore.collection('computers').doc(macAddress).set({
-      name: os.hostname(),
-      localIp: ipAddress,
-      status,
-      lastAction,
-      userName: os.userInfo().username,
-      message: '',
-    });
+    await firestore
+      .collection('computers')
+      .doc(macAddress)
+      .set({
+        name: os.hostname(),
+        localIp: ipAddress,
+        status,
+        lastAction,
+        pingTime: new Date().toLocaleString('ru').replace(/\//g, '.'),
+        userName: os.userInfo().username,
+        message: '',
+      });
   }
 
   (async () => {
@@ -104,13 +101,33 @@ function run() {
     setTimeout(() => {
       canOff = true;
       (async () => {
-        const { status, message } = (
+        const { status } = (
           await firestore.collection('computers').doc(macAddress).get()
         ).data();
 
         if (!status) shutdown();
+        else {
+          setInterval(async () => {
+            const { lastAction, message } = (
+              await firestore.collection('computers').doc(macAddress).get()
+            ).data();
+
+            await firestore
+              .collection('computers')
+              .doc(macAddress)
+              .set({
+                name: os.hostname(),
+                localIp: ipAddress,
+                status: true,
+                pingTime: new Date().toLocaleString('ru').replace(/\//g, '.'),
+                userName: os.userInfo().username,
+                lastAction,
+                message,
+              });
+          }, PING_TIME);
+        }
       })();
-    }, 30 * 1000);
+    }, WAKE_UP_TIME);
 
     await firestore
       .collection('computers')
@@ -119,7 +136,8 @@ function run() {
         name: os.hostname(),
         localIp: ipAddress,
         status: true,
-        lastAction: new Date().toLocaleString().replace(/\//g, '.'),
+        pingTime: new Date().toLocaleString('ru').replace(/\//g, '.'),
+        lastAction: new Date().toLocaleString('ru').replace(/\//g, '.'),
         userName: os.userInfo().username,
         message: '',
       });
