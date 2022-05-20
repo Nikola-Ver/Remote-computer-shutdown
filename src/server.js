@@ -6,7 +6,7 @@ const path = require("path");
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const loudness = require("loudness");
-// require("./firebase");
+require("./firebase");
 const isWin = /^win/.test(process.platform);
 
 let volume = 0;
