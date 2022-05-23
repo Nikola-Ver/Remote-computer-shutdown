@@ -5,7 +5,8 @@
   "main": "firebase.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd src && node server.js"
+    "start": "cd src && node server.js",
+    "install": "cd src && npm i"
   },
   "author": "",
   "license": "ISC"
