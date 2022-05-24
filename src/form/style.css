@@ -7,6 +7,10 @@
   user-select: none;
 }
 
+html {
+  background: black;
+}
+
 body {
   margin: 0;
   background: url("./img/gif/bacground.gif") no-repeat;

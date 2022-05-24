@@ -1,4 +1,4 @@
-const PORT = 4002;
+const { port: PORT, accessKey: ACCESS_KEY } = require("./settings.json");
 const exec = require("child_process").exec;
 const express = require("express");
 const app = express();
@@ -6,6 +6,8 @@ const path = require("path");
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 const loudness = require("loudness");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 require("./firebase");
 const isWin = /^win/.test(process.platform);
 
@@ -34,7 +36,14 @@ for (const name of Object.keys(nets)) {
   }
 }
 
-app.use(express.static(path.join(__dirname, "form")));
+app
+  .use(cors({ origin: "*" }))
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
+  .use(express.static(path.join(__dirname, "form")))
+  .post("/accessKey", (req, res) => {
+    res.send(ACCESS_KEY === req.body.accessKey);
+  });
 let timeSleep = null;
 let timerId = null;
 
