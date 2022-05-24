@@ -65,4 +65,6 @@ Detailed installation instructions are in the "<a href="installation">installati
 
 You can turn off your computer remotely from anywhere in the world by following the link (<a href="https://remote-shutdown-page.web.app/">open</a>)
 
+To start the program, you need to enter the access key: 123456789. You can also change it yourself in the settings.json file.
+
 Happy viewing :)
